@@ -78,6 +78,26 @@ textarea {
   color: #828282;
 }
 
+.news-position {
+  font-size: small;
+  color: #828282;
+}
+
 .news-info {
   margin-left: 40px;
+}
+
+.single-news-item {
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.single-news-list {
+  background-color: #f6f6ef;
+}
+
+.single-news-item p {
+  margin: 0px;
+  margin-bottom: 10px;
 }
