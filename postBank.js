@@ -21,6 +21,7 @@ const data = [
 
   const find = (id) => {
     const post = data.find(post => post.id === Number(id));
+    return {...post};
   }
 
   module.exports = {list: list, find: find};

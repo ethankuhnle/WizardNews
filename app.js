@@ -38,6 +38,26 @@ app.get("/", (req, res)=>{
   res.send(html)
 })
 
+app.get('/posts/:id', (req, res) => {
+  const id = req.params.id;
+  const post = postBank.find(id);
+  console.log(id);
+  console.log(post);
+  res.send(`<!DOCTYPE html>
+  <html>
+  <head>
+    <title>Wizard News</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="news-item">
+      <header><img src="/logo.png"/>Wizard News</header>
+      <h1>${post.title}</h1>
+    </div>
+  </body>
+</html>`);
+});
+
 const PORT = 1337;
 
 app.listen(PORT, () => {
