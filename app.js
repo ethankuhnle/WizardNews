@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const volleyball = require("volleyball");
 const postBank = require("./postBank");
+const postList = require('./src/views/postList.js');
+const postDetails = require('./src/views/postDetails.js');
 
-const { getTimeString } = require('./utils/timeCalc');
+
 
 
 app.use(volleyball);
@@ -16,31 +18,7 @@ app.use(cors());
 app.get("/", (req, res)=>{
   const posts = postBank.list();
   
-  const html = `<!DOCTYPE html>
-  <html>
-  <head>
-    <title>Wizard News</title>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
-    <div class="news-list">
-      <header><img src="/logo.png"/>Wizard News</header>
-      ${posts.map(post => `
-        <div class='news-item'>
-          <p>
-            <span class="news-position">${post.id}. ▲</span>
-            <a href=/posts/${post.id}>${post.title}</a>
-            <small>(by ${post.name})</small>
-          </p>
-          <small class="news-info">
-            ${post.upvotes} upvotes | ${getTimeString(post.date)}
-          </small>
-        </div>`
-      ).join('')}
-    </div>
-  </body>
-</html>`;
-  res.send(html)
+  res.send(postList(posts));
 })
 
 app.get('/posts/:id', (req, res) => {
@@ -52,22 +30,7 @@ app.get('/posts/:id', (req, res) => {
     throw new Error('Not Found')
   }
 
-  res.send(`<!DOCTYPE html>
-  <html>
-  <head>
-    <title>Wizard News</title>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
-    <div class="single-news-item">
-      <header><img src="/logo.png"/>Wizard News</header>
-      <div class="single-news-list">
-        <p>${post.title} <span class="news-position">(by ${post.name})</span></p>
-        <p>${post.content}</p>
-      </div>
-    </div>
-  </body>
-</html>`);
+  res.send(postDetails(post));
 });
 
 
