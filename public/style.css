@@ -91,6 +91,7 @@ textarea {
   padding: 0 15px;
   display: flex;
   flex-direction: column;
+  max-width: 650px;
 }
 
 .single-news-list {
