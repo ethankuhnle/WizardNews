@@ -3,6 +3,8 @@ const app = express();
 const volleyball = require("volleyball");
 const postBank = require("./postBank");
 
+const { getTimeString } = require('./utils/timeCalc');
+
 
 app.use(volleyball);
 app.use(express.static("public"));
@@ -31,7 +33,7 @@ app.get("/", (req, res)=>{
             <small>(by ${post.name})</small>
           </p>
           <small class="news-info">
-            ${post.upvotes} upvotes | ${post.date}
+            ${post.upvotes} upvotes | ${getTimeString(post.date)}
           </small>
         </div>`
       ).join('')}
