@@ -3,7 +3,7 @@ const { getTimeString } = require('../utils/timeCalc');
 function postList(posts) {
 
   return (
-    `<!DOCTYPE html>
+    html`<!DOCTYPE html>
     <html>
       <head>
         <title>Wizard News</title>

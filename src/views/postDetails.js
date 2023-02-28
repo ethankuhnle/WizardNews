@@ -1,7 +1,7 @@
 function postDetails(post) {
 
   return (
-    `<!DOCTYPE html>
+    html`<!DOCTYPE html>
     <html>
       <head>
         <title>Wizard News</title>
