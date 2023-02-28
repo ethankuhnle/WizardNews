@@ -7,6 +7,9 @@ const postBank = require("./postBank");
 app.use(volleyball);
 app.use(express.static("public"));
 
+const cors = require('cors');
+app.use(cors());
+
 
 app.get("/", (req, res)=>{
   const posts = postBank.list();
